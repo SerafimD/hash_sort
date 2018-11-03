@@ -5,6 +5,7 @@ gem 'thin'
 gem 'json'
 gem 'logger'
 gem 'sinatra-cross_origin'
+gem 'rake'
 
 group :development, :test do
   gem 'pry-byebug'
