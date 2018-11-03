@@ -51,6 +51,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler
   json
   logger
   pry-byebug

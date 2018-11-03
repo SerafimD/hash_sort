@@ -1,3 +1,3 @@
 .idea/
-/log/*
-!/log/.gitkeep
+app/log/*
+!app/log/.gitkeep
