@@ -6,13 +6,31 @@ class SortTreeService
 
   def build_tree
     result = {}
-    params.each do |elem|
-      elem.each do |key, value|
-        result[value] = [] if result[value].nil?
-        result[value] << key
+    # Проходим по всем behavior
+    Behavior.all.each do |b|
+      data = JSON.parse b[:properties]
+      id = b[:id]
+      result[id] = (compare_attrs(data, id))
+    end
+    result
+    result.to_json
+  end
+
+  def compare_attrs(data, id)
+    hash = {}
+    data.each do |key, value|
+      if params[key].eql?(value)
+        hash[key] = {
+          value: value
+        }
+      else
+        hash['default'] = {
+              'key': key,
+              'value': value
+        }
       end
     end
-    result.to_json
+    hash
   end
 
 end

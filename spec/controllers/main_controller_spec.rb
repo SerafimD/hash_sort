@@ -1,9 +1,9 @@
 require 'json'
 require 'sinatra'
 require_relative '../../app/controllers/application_controller'
-require_relative '../../app/controllers/main_controller'
+require_relative '../../app/controllers/tree_controller'
 
-RSpec.describe MainController do
+RSpec.describe TreeController do
 
   let(:body) { [{"x1": "aaa", "x2": "bbb", "x3": "ccc"}, {"y1": "bbb", "y2": "ccc", "y3": "ddd"}, {"z1": "ccc", "z2": "ddd", "z3": "eee"}].to_json }
   before do

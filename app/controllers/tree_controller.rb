@@ -1,9 +1,9 @@
-class MainController < ApplicationController
+class TreeController < ApplicationController
 
   #
   # POST Sort tree method
   #
-  post '/build_hash_tree' do
+  post '/build_tree' do
     content_type :json
     logger = Logger.new 'app/log/data.log'
     params = JSON.parse(request.body.read)

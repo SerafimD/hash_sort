@@ -1,11 +1,5 @@
-require 'json'
-
-require 'sinatra'
-require 'sinatra/base'
-require 'logger'
-
-Dir.glob('./app/controllers/application_controller.rb').each { |file| require file }
-Dir.glob('./app/controllers/main_controller.rb').each { |file| require file }
+require './app'
 
 # map the controllers to routes
-map('/hash') { run MainController }
+map('/behavior') { run BehaviorController}
+map('/hash') { run TreeController }
