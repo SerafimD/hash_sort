@@ -6,7 +6,6 @@ class SortTreeService
 
   def build_tree
     result = {}
-    # Проходим по всем behavior
     Behavior.all.each do |b|
       data = JSON.parse b[:properties]
       result[b[:id]] = (compare_attrs(data))
