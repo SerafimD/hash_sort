@@ -9,14 +9,13 @@ class SortTreeService
     # Проходим по всем behavior
     Behavior.all.each do |b|
       data = JSON.parse b[:properties]
-      id = b[:id]
-      result[id] = (compare_attrs(data, id))
+      result[b[:id]] = (compare_attrs(data))
     end
     result
     result.to_json
   end
 
-  def compare_attrs(data, id)
+  def compare_attrs(data)
     hash = {}
     data.each do |key, value|
       if params[key].eql?(value)
