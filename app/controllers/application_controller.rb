@@ -1,4 +1,5 @@
 class ApplicationController < Sinatra::Base
+  use CatchJsonParseErrors
   configure do
     enable :cross_origin
   end
