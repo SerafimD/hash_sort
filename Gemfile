@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'sinatra'
+gem 'sinatra', '1.4.8'
+gem 'sinatra-cross_origin'
+gem 'sinatra-activerecord'
+gem 'sinatra-json'
 gem 'thin'
 gem 'json'
 gem 'logger'
-gem 'sinatra-cross_origin'
-gem 'sinatra-activerecord'
 gem 'rake'
-gem 'sqlite3', '~> 1.3', '>= 1.3.11'
+gem 'pg'
 
 group :development, :test do
   gem 'pry-byebug'

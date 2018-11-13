@@ -7,7 +7,7 @@ class SortTreeService
   def build_tree
     result = {}
     Behavior.all.each do |b|
-      data = JSON.parse b[:properties]
+      data = b[:properties]
       result[b[:id]] = (compare_attrs(data))
     end
     result

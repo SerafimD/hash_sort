@@ -1,13 +1,20 @@
 require 'sinatra'
-require 'sinatra/base'
 require 'sinatra/activerecord'
-require 'sqlite3'
-require './models.rb'
+require 'sinatra/json'
 require 'json'
 require 'logger'
-require_relative 'app/middleware/catch_json_parse_errors'
-require_relative 'app/controllers/application_controller'
-require_relative 'app/controllers/behavior_controller'
-require_relative 'app/controllers/tree_controller'
 
-set :database, "sqlite3:database.sqlite3"
+require_relative 'app/models/behaviors'
+require_relative 'app/services/sort_tree_service'
+require_relative 'app/middleware/parse_errors_middleware'
+require_relative 'app/controllers/application_controller'
+require_relative 'app/controllers/tree_controller'
+require_relative 'app/controllers/behavior_controller'
+
+configure :development do
+  set :database, {adapter: 'postgresql', database: 'hash_development'}
+end
+
+configure :test do
+  set :database, {adapter: 'postgresql', database: 'hash_test'}
+end

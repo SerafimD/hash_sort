@@ -1,11 +1,16 @@
 class ApplicationController < Sinatra::Base
-  use CatchJsonParseErrors
+  use ParseErrorsMiddleware
   configure do
     enable :cross_origin
   end
 
+  configure :development do
+    enable :logging
+  end
+
   before do
     response.headers['Access-Control-Allow-Origin'] = '*'
+    content_type :json
   end
 
   options "*" do
@@ -15,12 +20,24 @@ class ApplicationController < Sinatra::Base
     200
   end
 
-  # services include
-  Dir.glob("./app/services/*.rb", &method(:require))
+  helpers do
+    def json_params
+      begin
+        JSON.parse(request.body.read)
+      rescue
+        halt 400, { message:'Invalid JSON' }.to_json
+      end
+    end
 
-  # don't enable logging when running tests
-  configure :production, :development do
-    enable :logging
+    def render_result(json)
+      return json.errors.messages.to_json unless json.valid?
+      if json.class < ActiveRecord::Base || json.class < ActiveRecord::Relation
+        {json: json, root: :result}.to_json
+      else
+        {json: {result: json}}.to_json
+      end
+    end
+
   end
 
 end

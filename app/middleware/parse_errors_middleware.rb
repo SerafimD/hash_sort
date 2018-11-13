@@ -1,4 +1,4 @@
-class CatchJsonParseErrors
+class ParseErrorsMiddleware
   def initialize(app)
     @app = app
   end

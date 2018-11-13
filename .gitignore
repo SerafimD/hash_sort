@@ -1,3 +1,4 @@
 .idea/
 app/log/*
 !app/log/.gitkeep
+/app/config/database.yml

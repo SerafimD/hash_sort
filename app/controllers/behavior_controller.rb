@@ -11,12 +11,9 @@ class BehaviorController < ApplicationController
   # create new behavior
   #
   post '/' do
-    properties = JSON.parse(request.body.read)['properties']
-    if properties.size <= 10
-      @behavior = Behavior.create(properties: properties.to_json)
-      return @behavior.to_json
-    end
-    'no more than 10'.to_json
+    properties = json_params['properties']
+    @behavior = Behavior.create(properties: properties)
+    render_result @behavior
   end
 
   #
