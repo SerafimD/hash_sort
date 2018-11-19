@@ -12,15 +12,4 @@ module JsonRender
     {json: error_response(code, body)}.to_json
   end
 
-  def error_code_message code
-    I18n.t('error_codes')[code] || "Unknown error message[#{code}]"
-  end
-
-  def error_response code, body={}
-    { error: {
-        code: code,
-        message: error_code_message(code)
-    }.deep_merge(body) }
-  end
-
 end
