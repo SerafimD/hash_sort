@@ -5,6 +5,6 @@ class Behavior < ActiveRecord::Base
 
   def check_properties_size
     return true if properties.size <= 10
-    self.errors.add('Ошибка', 'Не более 10')
+    self.errors.add('Error', 'no more than 10')
   end
 end
