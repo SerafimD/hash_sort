@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_11_04_121206) do
   enable_extension "plpgsql"
 
   create_table "behaviors", force: :cascade do |t|
-    t.jsonb "properties"
+    t.json "properties"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

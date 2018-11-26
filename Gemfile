@@ -9,6 +9,7 @@ gem 'json'
 gem 'logger'
 gem 'rake'
 gem 'pg'
+gem 'reportage', '0.1.4', git: 'https://github.com/SerafimD/reportage', branch: 'master'
 
 group :development, :test do
   gem 'pry-byebug'

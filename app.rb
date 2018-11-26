@@ -3,6 +3,7 @@ require 'sinatra/activerecord'
 require 'sinatra/json'
 require 'json'
 require 'logger'
+require 'reportage'
 
 require_relative 'app/models/behaviors'
 require_relative 'app/services/sort_tree_service'
