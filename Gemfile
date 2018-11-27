@@ -9,6 +9,7 @@ gem 'thin'
 gem 'json'
 gem 'logger'
 gem 'rake'
+gem 'rspec'
 gem 'pg'
 gem 'reportage', '0.1.4', git: 'https://github.com/SerafimD/reportage', branch: 'master'
 
