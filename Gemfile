@@ -14,6 +14,7 @@ gem 'pg'
 gem 'reportage', '0.1.4', git: 'https://github.com/SerafimD/reportage', branch: 'master'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'pry-byebug'
   gem 'rspec'
   gem 'rack-test', require: 'rack/test'

@@ -1,7 +1,7 @@
 default: &default
+  pool: 5
   adapter: postgresql
   encoding: unicode
-  pool: 5
 
 development:
   <<: *default
@@ -11,7 +11,7 @@ test:
   <<: *default
   database: hash_test
 
-
+# Heroku
 production:
   adapter: postgresql
   encoding: unicode
