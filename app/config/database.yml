@@ -1,3 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: hash_development
+
+test:
+  <<: *default
+  database: hash_test
+
+
 production:
   adapter: postgresql
   encoding: unicode

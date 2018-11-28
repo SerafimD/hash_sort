@@ -1,7 +1,10 @@
 # hash_sort
-## Test Wallarm
 
 [![Build Status](https://travis-ci.org/SerafimD/hash_sort.svg?branch=master)](https://travis-ci.org/SerafimD/hash_sort)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7f367cb2598f92583212/maintainability)](https://codeclimate.com/github/SerafimD/hash_sort/maintainability)
+
+* [Heroku] - run app immediately
+
 
 POST
 request :
@@ -55,6 +58,6 @@ response :
 
 ```
 
-Heroku
-https://mighty-earth-34915.herokuapp.com/
 
+
+[Heroku]: <https://mighty-earth-34915.herokuapp.com/>

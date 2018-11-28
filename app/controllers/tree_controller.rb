@@ -9,12 +9,12 @@ class TreeController < ApplicationController
   #
   # PoST Sort tree method v2
   #
-  post '/build_tree_v1' do
+  post '/build_tree_v2' do
     render_result SortTreeService.new(json_params).build_tree_v2
   end
 
   #
-  # PFD generation based on service object
+  # PFD generation based on own library
   #
   post '/build_tree_v1_pdf' do
     rep = Reportage.new
