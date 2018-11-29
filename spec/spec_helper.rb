@@ -1,9 +1,18 @@
 ENV['RACK_ENV'] = 'test'
-require 'rack/test'
-require 'rake'
 require_relative "../app/config/environment"
+require 'rake'
+require 'json'
 require 'rspec'
+require 'rack/test'
 require 'database_cleaner'
+require 'sinatra'
+require 'sinatra/activerecord'
+
+require_relative '../app/models/behaviors'
+require_relative '../app/middleware/parse_errors_middleware'
+require_relative '../app/controllers/application_controller'
+require_relative '../app/controllers/tree_controller'
+require_relative '../app/services/sort_tree_service'
 
 module RSpecMixin
   include Rack::Test::Methods
@@ -13,10 +22,14 @@ module RSpecMixin
 end
 
 DatabaseCleaner.strategy = :truncation
-
+ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.before(:all) do
-    # Rake::Task['db:test:prepare'].invoke
+    # Rake::Task['spec'].execute
+    # Rake::Task
+    # Rake::Task['db:drop'].execute
+    # Rake::Task['db:create'].execute
+    # Rake::Task['db:schema:load'].execute
     DatabaseCleaner.clean
   end
   config.after(:each) do
