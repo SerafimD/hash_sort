@@ -7,6 +7,7 @@ require 'rack/test'
 require 'database_cleaner'
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'pry'
 
 require_relative '../app/models/behaviors'
 require_relative '../app/middleware/parse_errors_middleware'
@@ -24,14 +25,9 @@ end
 DatabaseCleaner.strategy = :truncation
 ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
-  config.before(:all) do
-    # Rake::Task['spec'].execute
-    # Rake::Task
-    # Rake::Task['db:drop'].execute
-    # Rake::Task['db:create'].execute
-    # Rake::Task['db:schema:load'].execute
-    DatabaseCleaner.clean
-  end
+  # config.before(:all) do
+  #   DatabaseCleaner.clean
+  # end
   config.after(:each) do
     DatabaseCleaner.clean
   end

@@ -26,6 +26,7 @@ class ApplicationController < Sinatra::Base
   helpers do
     def json_params
       begin
+        request.body.rewind # in case someone already read it =)
         JSON.parse(request.body.read)
       rescue => e
         halt 400, { message: e }.to_json
