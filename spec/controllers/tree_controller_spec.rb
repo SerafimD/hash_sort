@@ -1,5 +1,6 @@
 RSpec.describe TreeController do
   let(:body) { {"color":"green","location":"unknown","type":"martian","weight":"light"}.to_json }
+  let(:body_error) { "error" }
 
   context 'base controller test' do
 
@@ -35,6 +36,16 @@ RSpec.describe TreeController do
       post '/build_tree_v1_pdf', body, headers: {'CONTENT_TYPE' => 'application/json'}
       file_path = 'tmp/out.pdf'
       expect(File.file?(file_path)).to be true
+    end
+
+  end
+
+  context 'Error section' do
+
+    it 'Error must response code 400' do
+      Behavior.create(:id => 11, :properties => {"color": "green", "location": "unknown", "type": "martian"})
+      post '/build_tree_v1', body_error, headers: {'CONTENT_TYPE' => 'application/json'}
+      expect(last_response.status).to eq 400
     end
 
   end
