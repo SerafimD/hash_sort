@@ -1,14 +1,11 @@
 default: &default
   pool: 5
-  host: localhost
   adapter: postgresql
   encoding: unicode
 
 development:
   <<: *default
-  username: user
-  database: app-dev
-#  database: hash_development
+  database: hash_development
 
 test:
   <<: *default
