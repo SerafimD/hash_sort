@@ -14,11 +14,22 @@ class TreeController < ApplicationController
   end
 
   #
-  # PFD generation based on own library
+  # PFD generation based on own library v1
   #
   post '/build_tree_v1_pdf' do
     rep = Reportage.new
     rep << SortTreeService.new(json_params).build_tree_v1
+    rep.to_pdf('tmp/out.pdf')
+    content_type :pdf
+    send_file('tmp/out.pdf', :disposition => 'attachment', :filename => 'out.pdf')
+  end
+
+  #
+  # PFD generation based on own library v2
+  #
+  post '/build_tree_v2_pdf' do
+    rep = Reportage.new
+    rep << SortTreeService.new(json_params).build_tree_v2
     rep.to_pdf('tmp/out.pdf')
     content_type :pdf
     send_file('tmp/out.pdf', :disposition => 'attachment', :filename => 'out.pdf')

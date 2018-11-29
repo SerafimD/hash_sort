@@ -8,6 +8,7 @@ require 'database_cleaner'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'pry'
+require 'reportage'
 
 require_relative '../app/models/behaviors'
 require_relative '../app/middleware/parse_errors_middleware'
@@ -25,11 +26,12 @@ end
 DatabaseCleaner.strategy = :truncation
 ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
-  # config.before(:all) do
-  #   DatabaseCleaner.clean
-  # end
+  config.before(:all) do
+    DatabaseCleaner.clean
+  end
   config.after(:each) do
     DatabaseCleaner.clean
+    FileUtils.rm_rf(Dir["tmp/*.pdf"])
   end
   config.include RSpecMixin
   config.expect_with :rspec do |expectations|
