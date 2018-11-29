@@ -17,6 +17,6 @@ production:
   encoding: unicode
   host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: app-dev
+  database: DATABASE
   username: user
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
