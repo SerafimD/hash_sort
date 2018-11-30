@@ -5,11 +5,7 @@ default: &default
 
 development:
   <<: *default
-#  database: hash_development
-  host: <%= ENV['DATABASE_URL'] %>
-  database: app-dev
-  username: user
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  database: hash_development
 
 test:
   <<: *default
@@ -19,8 +15,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-#  host: <%= ENV['DATABASE_URL'] %>
-#  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV['DATABASE_URL'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: app-dev
   username: user
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
