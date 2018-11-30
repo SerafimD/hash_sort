@@ -13,10 +13,8 @@ test:
 
 # Heroku
 production:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   host: <%= ENV['DATABASE_URL'] %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: app-dev
   username: user
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
